@@ -2,14 +2,17 @@
 Simple ECDH and AES 256 implementation with OpenSSL
 -- -- -- -- -- --
 компиляция:
-```make all```
-
+```sh
+make all
+```
 ===== error ===============
+```text
 в security.cpp
 мелкие правки из-за ошибок
 
 в main.cpp
 ругалось на строки
+```
 ```
 ByteArray alice_msg_buffer(alice_msg.data(), alice_msg.length() + 1);
 ByteArray bob_msg_buffer(bob_msg.data(), bob_msg.length() + 1);
