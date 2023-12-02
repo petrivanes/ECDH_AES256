@@ -142,7 +142,8 @@ ByteArray security::encrypt(ByteArray plain_text, security::AES_t aes_struct) {
 
   if(1 != EVP_EncryptFinal_ex(ctx, ciphertext.begin() + f_length, &s_length))
     handleErrors();
-  if(uint64_t reuired_length = f_length + s_length;reuired_length < ciphertext.length())
+  uint64_t reuired_length = f_length + s_length;  
+  if(reuired_length < ciphertext.length())
     ciphertext.resize(f_length + s_length);
   else if(reuired_length > ciphertext.length())
       throw std::runtime_error("Predicted ciphertext size lower then actual!");

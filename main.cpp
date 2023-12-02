@@ -14,11 +14,11 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]) {
   AES_t alice_aes_key = getSecret(bob_peer_key, alice_key_pair);
 
   std::string alice_msg = "Hello, Bob";
-  ByteArray alice_msg_buffer(alice_msg.data(), alice_msg.length() + 1);
+  ByteArray alice_msg_buffer(const_cast<char*>(alice_msg.data()), alice_msg.length() + 1);
   ByteArray alice_enc_msg = encrypt(alice_msg_buffer, alice_aes_key);
 
   std::string bob_msg = "Hello, Alice";
-  ByteArray bob_msg_buffer(bob_msg.data(), bob_msg.length() + 1);
+  ByteArray bob_msg_buffer(const_cast<char*>(bob_msg.data()), bob_msg.length() + 1);
   ByteArray bob_enc_msg = encrypt(bob_msg_buffer, bob_aes_key);
 
   ByteArray alice_recived_msg = decrypt(bob_enc_msg, alice_aes_key);
